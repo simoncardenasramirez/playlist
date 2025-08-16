@@ -1,5 +1,6 @@
 package com.priv.co.playlist__api.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,12 +14,13 @@ public class CancionEntity {
     private String titulo;
     private String artista;
     private String album;
-    private String anno;   // si prefieres año numérico, cámbialo a Integer
+    private String anno;
     private String genero;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lista_id", nullable = false) // FK en la tabla canciones
-    private ListaReproduccionEntity lista;
+    @JoinColumn(name = "lista_id", nullable = false)
+    private ListaReproduccionEntity listaReproduccion;
 
     public CancionEntity() {}
 
@@ -31,7 +33,7 @@ public class CancionEntity {
         this.genero = genero;
     }
 
-    // --- getters/setters ---
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -50,6 +52,6 @@ public class CancionEntity {
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }
 
-    public ListaReproduccionEntity getLista() { return lista; }
-    public void setLista(ListaReproduccionEntity lista) { this.lista = lista; }
+    public ListaReproduccionEntity getLista() { return listaReproduccion; }
+    public void setLista(ListaReproduccionEntity lista) { this.listaReproduccion = lista; }
 }

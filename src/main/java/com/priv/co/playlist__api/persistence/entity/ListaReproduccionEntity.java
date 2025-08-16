@@ -1,6 +1,8 @@
 package com.priv.co.playlist__api.persistence.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,20 +20,12 @@ public class ListaReproduccionEntity {
 
     private String descripcion;
 
-    // Debe coincidir con el nombre del atributo en CancionEntity: "lista"
-    @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @JsonManagedReference
+    @OneToMany(mappedBy = "listaReproduccion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CancionEntity> canciones = new ArrayList<>();
 
-    // --- helpers opcionales para mantener bidireccionalidad ---
-    public void addCancion(CancionEntity c) {
-        canciones.add(c);
-        c.setLista(this);
-    }
 
-    public void removeCancion(CancionEntity c) {
-        canciones.remove(c);
-        c.setLista(null);
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

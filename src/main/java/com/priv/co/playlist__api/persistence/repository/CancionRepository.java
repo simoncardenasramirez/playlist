@@ -2,10 +2,11 @@ package com.priv.co.playlist__api.persistence.repository;
 
 import com.priv.co.playlist__api.persistence.entity.CancionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import java.util.Optional;
 
-@Repository
+
 public interface CancionRepository extends JpaRepository<CancionEntity, Long> {
+    Optional<CancionEntity> findByIdAndListaReproduccion_Nombre(Long id, String nombreLista);
 }
+
