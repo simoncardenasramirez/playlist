@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "27911029-0d55-4e80-81fd-b72afa6860b4",
+		"name": "LISTA REPRODUCCIONES API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34376965"
+	},
+	"item": [
+		{
+			"name": "Autenticacion",
+			"item": [
+				{
+					"name": "Registrar usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"demo@correo.com\",\r\n  \"password\": \"Secreta123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"demo@correo.com\",\r\n  \"password\": \"Secreta123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listado de reproduccion",
+			"item": [
+				{
+					"name": "crear listado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZW1vQGNvcnJlby5jb20iLCJpYXQiOjE3NTUzOTA4MjUsImV4cCI6MTc1NTM5ODAyNX0.-jdXJjG7rOXg-IfepgMVlEUgZjosL4bi0UveRFWZ5sgGyEb2bXEEpJp4BPVFeROl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Mi Lista 1\",\r\n  \"descripcion\": \"Demo\",\r\n  \"canciones\": [\r\n    { \"titulo\": \"Song A\", \"artista\": \"Artist A\", \"album\": \"Album A\", \"anno\": \"2024\", \"genero\": \"Pop\" },\r\n    { \"titulo\": \"Song B\", \"artista\": \"Artist B\", \"album\": \"Album B\", \"anno\": \"2023\", \"genero\": \"Rock\" }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "consultar todos los listados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZW1vQGNvcnJlby5jb20iLCJpYXQiOjE3NTUzOTA4MjUsImV4cCI6MTc1NTM5ODAyNX0.-jdXJjG7rOXg-IfepgMVlEUgZjosL4bi0UveRFWZ5sgGyEb2bXEEpJp4BPVFeROl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar un listado por el nombre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZW1vQGNvcnJlby5jb20iLCJpYXQiOjE3NTUzOTA4MjUsImV4cCI6MTc1NTM5ODAyNX0.-jdXJjG7rOXg-IfepgMVlEUgZjosL4bi0UveRFWZ5sgGyEb2bXEEpJp4BPVFeROl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lists/Mi Lista 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lists",
+								"Mi Lista 1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un listado  por  su nombre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZW1vQGNvcnJlby5jb20iLCJpYXQiOjE3NTUzOTA4MjUsImV4cCI6MTc1NTM5ODAyNX0.-jdXJjG7rOXg-IfepgMVlEUgZjosL4bi0UveRFWZ5sgGyEb2bXEEpJp4BPVFeROl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lists/Mi Lista 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lists",
+								"Mi Lista 1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
