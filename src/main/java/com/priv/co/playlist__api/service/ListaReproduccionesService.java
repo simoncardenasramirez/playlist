@@ -44,17 +44,19 @@ public class ListaReproduccionesService {
         return listasRepo.save(input);
     }
 
-    public List<ListaReproduccionEntity> listar() {
-        return listasRepo.findAllWithSongs().stream()
+    public List<ListaReproduccionEntity> listarConCanciones() {
+        return listasRepo.findAllWithSongs()
+                .stream()
                 .sorted(Comparator.comparing(ListaReproduccionEntity::getNombre))
                 .toList();
     }
+
 
     public ListaReproduccionEntity obtenerPorNombre(String nombre) {
         if (nombre == null || nombre.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "nombre inválido");
         }
-        return listasRepo.findByNombreWithSongs(nombre)
+        return listasRepo.findByNombre(nombre)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "lista no encontrada"));
     }
 

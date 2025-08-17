@@ -37,7 +37,7 @@ public class CancionService {
 
 
     public void eliminarDeLista(String listName, Long songId) {
-        var cancion = cancionRepo.findByIdAndListaReproduccion_Nombre(songId, listName)
+        var cancion = cancionRepo.findByIdAndLista_Nombre(songId, listName)
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "canción no encontrada en esa lista"));
         cancionRepo.delete(cancion);

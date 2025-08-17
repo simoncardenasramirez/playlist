@@ -42,8 +42,8 @@ public class ListaReproduccionesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ListaReproduccionEntity>> listar() {
-        return ResponseEntity.ok(service.listar());
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.listarConCanciones());
     }
 
     @GetMapping("/{listName}")

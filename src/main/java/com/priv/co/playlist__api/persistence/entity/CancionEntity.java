@@ -17,10 +17,10 @@ public class CancionEntity {
     private String anno;
     private String genero;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "lista_id", nullable = false)
-    private ListaReproduccionEntity listaReproduccion;
+    @JsonBackReference // o: @JsonIgnoreProperties("canciones")
+    private ListaReproduccionEntity lista;
 
     public CancionEntity() {}
 
@@ -52,6 +52,6 @@ public class CancionEntity {
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }
 
-    public ListaReproduccionEntity getLista() { return listaReproduccion; }
-    public void setLista(ListaReproduccionEntity lista) { this.listaReproduccion = lista; }
+    public ListaReproduccionEntity getLista() { return lista; }
+    public void setLista(ListaReproduccionEntity lista) { this.lista = lista; }
 }

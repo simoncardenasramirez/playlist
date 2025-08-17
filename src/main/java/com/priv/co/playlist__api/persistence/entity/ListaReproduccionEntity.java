@@ -20,12 +20,10 @@ public class ListaReproduccionEntity {
 
     private String descripcion;
 
-    @JsonIgnore
-    @JsonManagedReference
-    @OneToMany(mappedBy = "listaReproduccion", cascade = CascadeType.ALL, orphanRemoval = true)
+    // ListaReproduccionEntity
+    @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // o: @JsonIgnoreProperties("lista")
     private List<CancionEntity> canciones = new ArrayList<>();
-
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
