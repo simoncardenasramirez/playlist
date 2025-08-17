@@ -98,13 +98,21 @@ Incluidas con JUnit/Mockito. Ejecuta:
 mvn test
 
 🗂️ Estructura (resumen)
+
 src/main/java/com/priv/co/playlist__api
+
   ├─ controller
+  
   ├─ service
+  
   ├─ persistence
+  
   │   ├─ entity
+  
   │   └─ repository
+  
   ├─ config/security
+  
   └─ PlaylistApiApplication.java
 
 src/main/resources
