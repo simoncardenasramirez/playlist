@@ -48,7 +48,6 @@ Si no existen en tu BD H2, puedes registrarlos con /auth/register.
 
 Archivo JSON en: postman/playlist-api.postman_collection.json
 
-(Opcional) Link público Postman: [colócala aquí si la generas]
 
 ⚙️ Configuración
 Requisitos
@@ -91,11 +90,6 @@ mvn clean verify
 # Arrancar
 mvn spring-boot:run
 
-🧪 Pruebas unitarias
-
-Incluidas con JUnit/Mockito. Ejecuta:
-
-mvn test
 
 🗂️ Estructura (resumen)
 
